@@ -1,0 +1,372 @@
+<title>SnapLab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="SnapLab 앱 라인업: Snap Keyboard, 음성 시계, SnapQR, 쉿! 소음 지킴이">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a lab bench catalogue. Wide hero line, then one row per app read left (identity) to right (spec sheet), ending in the tester call. */
+:root {
+  --bg: #f2f4f8;
+  --panel: #ffffff;
+  --ink: #10141d;
+  --muted: #5a6273;
+  --line: #d9dee8;
+  --blue: #2a5bf0;
+  --snap: #f2c200;
+  --ok: #138a4f;
+  --wait: #b06a00;
+  --dev: #6d3fd6;
+  --font-display: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-body: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c0f15; --panel: #141923; --ink: #e9edf5; --muted: #98a1b3; --line: #262d3b;
+    --blue: #6f93ff; --snap: #f2c200; --ok: #4cc98a; --wait: #f0a83a; --dev: #a989ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c0f15; --panel: #141923; --ink: #e9edf5; --muted: #98a1b3; --line: #262d3b;
+  --blue: #6f93ff; --snap: #f2c200; --ok: #4cc98a; --wait: #f0a83a; --dev: #a989ff;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* language switch: only the chosen language shows */
+html:not([data-lang="en"]) [lang="en"] { display: none !important; }
+html[data-lang="en"] [lang="ko"] { display: none !important; }
+
+header.top { padding-block: 20px; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.mark { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-size: 20px; letter-spacing: -0.02em; }
+.mark i { width: 14px; height: 14px; background: var(--snap); border-radius: 3px; box-shadow: 6px 6px 0 var(--blue); }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--panel); }
+.lang button { font: 500 13px var(--font-mono); border: 0; background: transparent; color: var(--muted); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+.hero { padding-block: 40px 56px; }
+.hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(36px, 7vw, 76px); line-height: 1.08; letter-spacing: -0.035em; margin: 0; text-wrap: balance; max-width: 15ch; }
+.hero h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--snap) 62%, var(--snap) 92%, transparent 92%); color: var(--ink); }
+.hero p { color: var(--muted); font-size: 18px; max-width: 58ch; margin: 20px 0 0; }
+.shelf { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+.shelf a { display: block; width: 64px; height: 64px; border-radius: 16px; overflow: hidden; transition: transform .2s ease; }
+.shelf a:hover { transform: translateY(-4px) rotate(-3deg); }
+.shelf img, .shelf svg { width: 100%; height: 100%; display: block; }
+
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.facts div { padding: 22px 20px 22px 0; }
+.facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.facts b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.facts span { color: var(--muted); font-size: 14px; }
+
+section.apps { padding-block: 64px 24px; }
+.eyebrow { font: 500 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; margin: 0 0 28px; text-wrap: balance; }
+
+.app { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; padding-block: 36px; border-top: 1px solid var(--line); }
+.app:last-of-type { border-bottom: 1px solid var(--line); }
+.id { display: flex; gap: 20px; align-items: flex-start; min-width: 0; }
+.id .icon { flex: none; width: 88px; height: 88px; border-radius: 22px; overflow: hidden; }
+.id .icon img, .id .icon svg { width: 100%; height: 100%; display: block; }
+.id h3 { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; margin: 2px 0 6px; line-height: 1.25; }
+.id .pitch { margin: 0 0 14px; font-weight: 600; }
+.id ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.id li + li { margin-top: 4px; }
+
+.spec { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; align-self: start; min-width: 0; }
+.spec dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 9px 16px; font-size: 14px; }
+.spec dt { font: 500 12px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.spec dd { margin: 0; overflow-wrap: anywhere; }
+.spec code { font: 13px var(--font-mono); }
+.pill { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.pill.ok { color: var(--ok); } .pill.wait { color: var(--wait); } .pill.dev { color: var(--dev); }
+.spec .go { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; }
+
+.stage { margin-top: 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.stage i { height: 5px; border-radius: 3px; background: var(--line); }
+.stage i.on { background: currentColor; }
+
+section.join { padding-block: 64px 40px; }
+.join-box { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.join ol { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 18px; }
+.join ol li { counter-increment: s; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
+.join ol li::before { content: counter(s); font: 500 15px var(--font-mono); width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; }
+.join ol p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+.join .links { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; font-size: 15px; }
+.join .links div { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.join .links small { color: var(--muted); font-size: 13px; }
+
+footer { padding-block: 40px 56px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); margin-top: 32px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mail { font-family: var(--font-mono); color: var(--ink); user-select: all; }
+
+@media (max-width: 760px) {
+  .app, .join-box { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts div, .facts div + div { padding: 16px 0; border-left: 0; }
+  .facts div + div { border-top: 1px solid var(--line); }
+  .id .icon { width: 64px; height: 64px; border-radius: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .shelf a { transition: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="shush" viewBox="0 0 108 108">
+    <rect width="108" height="108" fill="#6D3FD6"/>
+    <path d="M30,60 Q42,50 54,60 Q66,70 78,60" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M49,30a5,5 0 0,1 10,0v34h-10z" fill="#fff"/>
+    <path d="M28,42a26,26 0 0,0 0,36M80,42a26,26 0 0,1 0,36" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark"><i></i>SnapLab</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-ko" data-l="ko" aria-pressed="true">한국어</button>
+      <button type="button" id="lang-en" data-l="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1 lang="ko">손에 딱 맞는 <em>작은 도구</em>를 만듭니다</h1>
+      <h1 lang="en">Small tools that <em>just work</em></h1>
+      <p lang="ko">SnapLab은 매일 쓰는 안드로이드 앱을 만드는 1인 개발실입니다. 광고도, 회원가입도 없이 할 일 하나를 빠르고 확실하게 해내는 앱을 만듭니다.</p>
+      <p lang="en">SnapLab is a one-person studio making everyday Android apps. No ads, no sign-ups. Each app does one job, quickly and reliably.</p>
+      <nav class="shelf" aria-label="Apps">
+        <a href="#snap-keyboard" title="Snap Keyboard"><img src="img/keyboard.png" alt="Snap Keyboard"></a>
+        <a href="#voice-clock" title="Voice Clock"><img src="img/voiceclock.png" alt="Voice Clock"></a>
+        <a href="#snapqr" title="SnapQR"><img src="img/snapqr.png" alt="SnapQR"></a>
+        <a href="#shush-meter" title="Shush Meter"><svg role="img" aria-label="Shush Meter"><use href="#shush"/></svg></a>
+      </nav>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="facts">
+      <div><b>0</b><span lang="ko">광고·회원가입·추적</span><span lang="en">ads, accounts or trackers</span></div>
+      <div><b>3 / 4</b><span lang="ko">인터넷 권한 자체가 없는 앱</span><span lang="en">apps with no internet permission at all</span></div>
+      <div><b lang="ko">기기 안</b><b lang="en">On-device</b><span lang="ko">녹음·입력·스캔은 폰 밖으로 나가지 않음</span><span lang="en">recordings, typing and scans stay on your phone</span></div>
+    </div>
+  </div>
+
+  <section class="apps" aria-labelledby="apps-h">
+    <div class="wrap">
+      <p class="eyebrow">Lineup · 2026.11</p>
+      <h2 id="apps-h"><span lang="ko">앱 라인업</span><span lang="en">The lineup</span></h2>
+
+      <!-- Snap Keyboard -->
+      <article class="app" id="snap-keyboard">
+        <div class="id">
+          <div class="icon"><img src="img/keyboard.png" alt=""></div>
+          <div>
+            <h3>Snap Keyboard</h3>
+            <p class="pitch" lang="ko">큰 키로 밀어서 치는 단모음 한글 키보드</p>
+            <p class="pitch" lang="en">A Korean keyboard with big keys you swipe</p>
+            <ul lang="ko">
+              <li>자음 14개 + 단모음 8개, 아래로 밀면 ㄲㄸㅃㅆㅉ · ㅑㅕㅛㅠ</li>
+              <li>이어질 단어 추천, 오타 교정 제안, 기기 안 단어 학습</li>
+              <li>스페이스 길게 눌러 한자 변환, 클립보드 기록, 음성 입력</li>
+              <li>한 손 모드, 폴더블 분할 자판, 완전 검정 테마</li>
+            </ul>
+            <ul lang="en">
+              <li>14 consonants + 8 vowels; swipe down for double consonants and diphthongs</li>
+              <li>Next-word suggestions, typo hints, on-device learning</li>
+              <li>Hanja conversion, clipboard history, voice typing</li>
+              <li>One-handed mode, split layout for foldables, pure black theme</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec">
+          <dl>
+            <dt lang="ko">상태</dt><dt lang="en">Status</dt>
+            <dd><span class="pill ok" lang="ko">비공개 테스트 중</span><span class="pill ok" lang="en">Closed testing</span>
+              <div class="stage" style="color: var(--ok)" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></dd>
+            <dt lang="ko">버전</dt><dt lang="en">Version</dt><dd>1.0.1</dd>
+            <dt lang="ko">언어</dt><dt lang="en">Languages</dt><dd lang="ko">한국어 · 영어 자판</dd><dd lang="en">Korean · English layouts</dd>
+            <dt lang="ko">인터넷</dt><dt lang="en">Internet</dt><dd lang="ko">권한 없음</dd><dd lang="en">No permission</dd>
+            <dt lang="ko">패키지</dt><dt lang="en">Package</dt><dd><code>com.minq.snapkeyboard</code></dd>
+          </dl>
+          <a class="go" href="https://play.google.com/apps/testing/com.minq.snapkeyboard"><span lang="ko">테스트 참여하기 →</span><span lang="en">Join the test →</span></a>
+        </aside>
+      </article>
+
+      <!-- Voice Clock -->
+      <article class="app" id="voice-clock">
+        <div class="id">
+          <div class="icon"><img src="img/voiceclock.png" alt=""></div>
+          <div>
+            <h3 lang="ko">음성 시계 – 말하는 타이머</h3>
+            <h3 lang="en">Voice Clock: Talking Timer</h3>
+            <p class="pitch" lang="ko">남은 시간을 소리 내어 세어 주는 타이머</p>
+            <p class="pitch" lang="en">A timer that counts down out loud</p>
+            <ul lang="ko">
+              <li>마지막 1분부터 "30초… 10, 9, 8…" 음성 카운트다운</li>
+              <li>아빠·엄마·아이 목소리로 녹음해 타이머 음성으로 사용</li>
+              <li>화면이 꺼져도 정확하고 잠금 화면 위에서 울림</li>
+              <li>시각을 말해 주는 알람, 세계 시계, 스톱워치</li>
+            </ul>
+            <ul lang="en">
+              <li>Spoken countdown in the last minute: "30 seconds… 10, 9, 8…"</li>
+              <li>Record family voices and use them as the timer voice</li>
+              <li>Accurate with the screen off, rings over the lock screen</li>
+              <li>Talking alarms, world clock and stopwatch</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec">
+          <dl>
+            <dt lang="ko">상태</dt><dt lang="en">Status</dt>
+            <dd><span class="pill ok" lang="ko">비공개 테스트 중</span><span class="pill ok" lang="en">Closed testing</span>
+              <div class="stage" style="color: var(--ok)" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></dd>
+            <dt lang="ko">버전</dt><dt lang="en">Version</dt><dd>1.2.2</dd>
+            <dt lang="ko">언어</dt><dt lang="en">Languages</dt><dd lang="ko">영어 · 한국어 · 일본어 · 중국어</dd><dd lang="en">English · Korean · Japanese · Chinese</dd>
+            <dt lang="ko">인터넷</dt><dt lang="en">Internet</dt><dd lang="ko">권한 없음</dd><dd lang="en">No permission</dd>
+            <dt lang="ko">크기</dt><dt lang="en">Size</dt><dd lang="ko">외부 라이브러리 없음</dd><dd lang="en">No third-party libraries</dd>
+          </dl>
+          <a class="go" href="https://play.google.com/apps/testing/com.minq.voiceclock"><span lang="ko">테스트 참여하기 →</span><span lang="en">Join the test →</span></a>
+        </aside>
+      </article>
+
+      <!-- SnapQR -->
+      <article class="app" id="snapqr">
+        <div class="id">
+          <div class="icon"><img src="img/snapqr.png" alt=""></div>
+          <div>
+            <h3 lang="ko">SnapQR – 안전한 QR 스캐너</h3>
+            <h3 lang="en">SnapQR – Safe QR Scanner</h3>
+            <p class="pitch" lang="ko">비추는 순간 잡고, 열기 전에 어디로 가는지 보여 주는 QR 스캐너</p>
+            <p class="pitch" lang="en">Locks on instantly and shows where a link goes before you open it</p>
+            <ul lang="ko">
+              <li>작거나 먼 코드도 줌 없이 바로 인식, 첫 실행부터 모델 내장</li>
+              <li>제목·이미지 미리보기, 단축 URL은 최종 주소까지 추적</li>
+              <li>가짜 QR(큐싱) 경고: 유사 도메인, 동형 문자, APK, IP 주소</li>
+              <li>Wi-Fi 연결, 전화·문자·지도·일정 코드를 맞는 앱으로</li>
+            </ul>
+            <ul lang="en">
+              <li>Catches small or distant codes with no zooming; model built in</li>
+              <li>Link preview, and short links followed to the final address</li>
+              <li>Quishing warnings: look-alike domains, homoglyphs, APKs, raw IPs</li>
+              <li>Joins Wi-Fi, opens phone, SMS, map and calendar codes in the right app</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec">
+          <dl>
+            <dt lang="ko">상태</dt><dt lang="en">Status</dt>
+            <dd><span class="pill wait" lang="ko">비공개 테스트 검토 중</span><span class="pill wait" lang="en">Closed test in review</span>
+              <div class="stage" style="color: var(--wait)" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div></dd>
+            <dt lang="ko">버전</dt><dt lang="en">Version</dt><dd>1.0.0</dd>
+            <dt lang="ko">언어</dt><dt lang="en">Languages</dt><dd lang="ko">6개 언어 (영·한·일·중·프·스)</dd><dd lang="en">6 (EN, KO, JA, ZH, FR, ES)</dd>
+            <dt lang="ko">인터넷</dt><dt lang="en">Internet</dt><dd lang="ko">링크 미리보기에만 사용, 스캔 기록 없음</dd><dd lang="en">Only for link previews; no scan history</dd>
+            <dt lang="ko">검사</dt><dt lang="en">Checks</dt><dd lang="ko">기기 안에서 1ms 미만</dd><dd lang="en">On-device, under 1 ms</dd>
+          </dl>
+          <a class="go" href="https://play.google.com/apps/testing/com.sssnaplab.snapqr"><span lang="ko">테스트 참여하기 (검토 후 열림) →</span><span lang="en">Join the test (opens after review) →</span></a>
+        </aside>
+      </article>
+
+      <!-- Shush Meter -->
+      <article class="app" id="shush-meter">
+        <div class="id">
+          <div class="icon"><svg role="img" aria-label=""><use href="#shush"/></svg></div>
+          <div>
+            <h3 lang="ko">쉿! 소음 지킴이</h3>
+            <h3 lang="en">Shush Meter</h3>
+            <p class="pitch" lang="ko">아이들이 시끄러우면 "얘들아, 조용히 좀 해 줘!" 하고 대신 말해 주는 소음계</p>
+            <p class="pitch" lang="en">A noise meter that asks the kids to keep it down, so you don't have to</p>
+            <ul lang="ko">
+              <li>정한 dB를 몇 초 넘으면 음성·내 목소리·차임벨로 경고</li>
+              <li>코골이 감시: 저음이 숨 쉬는 박자로 이어지면 기록·진동</li>
+              <li>층간소음 대비 소음 일지: 1분마다 Leq·Lmax, 하루 1쪽 PDF 보고서</li>
+              <li>앱을 꺼도 동작, 소음 순간만 골라 녹음</li>
+            </ul>
+            <ul lang="en">
+              <li>Warns with speech, your own voice or a chime when noise stays over your limit</li>
+              <li>Snore watch: counts low sounds that repeat at a breathing rhythm</li>
+              <li>Noise log every minute (Leq, Lmax) with a one-page daily PDF report</li>
+              <li>Keeps running in the background; can record just the loud moments</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec">
+          <dl>
+            <dt lang="ko">상태</dt><dt lang="en">Status</dt>
+            <dd><span class="pill dev" lang="ko">개발 중</span><span class="pill dev" lang="en">In development</span>
+              <div class="stage" style="color: var(--dev)" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div></dd>
+            <dt lang="ko">버전</dt><dt lang="en">Version</dt><dd>1.1.0</dd>
+            <dt lang="ko">언어</dt><dt lang="en">Languages</dt><dd lang="ko">한국어</dd><dd lang="en">Korean</dd>
+            <dt lang="ko">인터넷</dt><dt lang="en">Internet</dt><dd lang="ko">권한 없음</dd><dd lang="en">No permission</dd>
+            <dt lang="ko">측정</dt><dt lang="en">Metering</dt><dd lang="ko">A특성 dB 추정치, 기기별 보정</dd><dd lang="en">A-weighted dB estimate, per-device calibration</dd>
+          </dl>
+          <p class="go" style="color: var(--muted); font-weight: 400; margin: 14px 0 0;" lang="ko">Play 스토어 등록 준비 중</p>
+          <p class="go" style="color: var(--muted); font-weight: 400; margin: 14px 0 0;" lang="en">Coming to Google Play</p>
+        </aside>
+      </article>
+      <p style="color: var(--muted); font-size: 13px; margin-top: 14px;">
+        <span lang="ko">진행 막대: 개발 → 테스트 검토 → 비공개 테스트 → 정식 출시</span>
+        <span lang="en">Progress bar: development → test review → closed testing → public release</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="join" aria-labelledby="join-h">
+    <div class="wrap">
+      <p class="eyebrow">Testers wanted</p>
+      <h2 id="join-h"><span lang="ko">테스터가 되어 주세요</span><span lang="en">Become a tester</span></h2>
+      <div class="join-box">
+        <ol>
+          <li><div><b lang="ko">테스터 그룹 가입</b><b lang="en">Join the tester group</b>
+            <p lang="ko">폰에서 쓰는 Google 계정으로 <a href="https://groups.google.com/g/snaplab-testers">snaplab-testers</a> 그룹에 가입합니다. 한 번 가입하면 모든 SnapLab 앱 테스트에 참여할 수 있어요.</p>
+            <p lang="en">With the Google account on your phone, join <a href="https://groups.google.com/g/snaplab-testers">snaplab-testers</a>. One group covers every SnapLab app.</p></div></li>
+          <li><div><b lang="ko">"테스터 되기" 누르기</b><b lang="en">Tap "Become a tester"</b>
+            <p lang="ko">오른쪽 앱별 링크를 같은 계정으로 열고, 같은 화면에서 Google Play로 설치합니다.</p>
+            <p lang="en">Open an app's link with the same account and install it from Google Play.</p></div></li>
+          <li><div><b lang="ko">14일 동안 지우지 않기</b><b lang="en">Keep it for 14 days</b>
+            <p lang="ko">Google Play 정책상 정식 출시 전에 테스터 12명이 14일 동안 설치해 둬야 합니다. 가끔 열어서 써 주시면 큰 도움이 돼요.</p>
+            <p lang="en">Google Play needs 12 testers to keep the app installed for 14 days before public release. Opening it now and then helps a lot.</p></div></li>
+        </ol>
+        <div class="links">
+          <div><a href="https://play.google.com/apps/testing/com.minq.snapkeyboard">Snap Keyboard</a><small lang="ko">참여 가능</small><small lang="en">Open</small></div>
+          <div><a href="https://play.google.com/apps/testing/com.minq.voiceclock"><span lang="ko">음성 시계</span><span lang="en">Voice Clock</span></a><small lang="ko">참여 가능</small><small lang="en">Open</small></div>
+          <div><a href="https://play.google.com/apps/testing/com.sssnaplab.snapqr">SnapQR</a><small lang="ko">Google 검토 후 열림</small><small lang="en">Opens after Google review</small></div>
+          <small lang="ko">안드로이드 폰만 참여할 수 있어요.</small>
+          <small lang="en">Android phones only.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 SnapLab</div>
+    <div><span lang="ko">문의·의견</span><span lang="en">Contact</span> <span class="mail">snaplabpresent@gmail.com</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function set(l) {
+    root.setAttribute('data-lang', l);
+    root.lang = l;
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.l === l)); });
+    try { localStorage.setItem('snaplab-lang', l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('snaplab-lang'); } catch (e) {}
+  set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.l); }); });
+})();
+</script>
