@@ -97,7 +97,7 @@ h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 
 .id { display: flex; gap: 20px; align-items: flex-start; min-width: 0; }
 .id .icon { flex: none; width: 88px; height: 88px; border-radius: 22px; overflow: hidden; }
 .id .icon img, .id .icon svg { width: 100%; height: 100%; display: block; }
-.id h3 { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; margin: 2px 0 6px; line-height: 1.25; }
+.id h3 { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; margin: 2px 0 6px; line-height: 1.25; word-break: keep-all; }
 .id .pitch { margin: 0 0 14px; font-weight: 600; }
 .id ul { margin: 0; padding-left: 18px; color: var(--muted); }
 .id li + li { margin-top: 4px; }
@@ -192,6 +192,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         <a href="#snapqr" title="SnapQR"><img src="img/snapqr.png" alt="SnapQR"></a>
         <a href="#shush-meter" title="Shush Meter"><svg role="img" aria-label="Shush Meter"><use href="#shush"/></svg></a>
         <a href="#cosmic-zoom" title="Cosmic Zoom"><img src="img/cosmiczoom.png" alt="Cosmic Zoom"></a>
+        <a href="#blackhole-odyssey" title="Black Hole Odyssey"><img src="img/blackhole.png" alt="Black Hole Odyssey"></a>
       </nav>
     </div>
   </section>
@@ -199,7 +200,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   <div class="wrap">
     <div class="facts">
       <div><b>0</b><span lang="ko">광고·회원가입·추적</span><span lang="en">ads, accounts or trackers</span></div>
-      <div><b>4 / 5</b><span lang="ko">인터넷 권한 자체가 없는 앱</span><span lang="en">apps with no internet permission at all</span></div>
+      <div><b>5 / 6</b><span lang="ko">인터넷 권한 자체가 없는 앱</span><span lang="en">apps with no internet permission at all</span></div>
       <div><b lang="ko">기기 안</b><b lang="en">On-device</b><span lang="ko">녹음·입력·스캔은 폰 밖으로 나가지 않음</span><span lang="en">recordings, typing and scans stay on your phone</span></div>
     </div>
   </div>
@@ -397,6 +398,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <a class="go" href="https://play.google.com/apps/testing/com.sssnaplab.cosmiczoom"><span lang="ko">테스트 참여하기 →</span><span lang="en">Join the test →</span></a>
         </aside>
       </article>
+      <!-- Black Hole Odyssey -->
+      <article class="app" id="blackhole-odyssey">
+        <div class="id">
+          <div class="icon"><img src="img/blackhole.png" alt=""></div>
+          <div>
+            <h3 lang="ko">블랙홀 오디세이 – 별에서 블랙홀까지</h3>
+            <h3 lang="en">Black Hole Odyssey</h3>
+            <p class="pitch" lang="ko">가스 구름에서 초신성, 블랙홀, 중력파, 호킹 증발까지 손가락으로 넘겨 보는 블랙홀의 일생</p>
+            <p class="pitch" lang="en">Swipe through a black hole's life, from gas cloud to supernova, gravitational waves and Hawking glow</p>
+            <ul lang="ko">
+              <li>태양보다 30배 무거운 별 하나의 일생을 13단계 움직이는 그림으로</li>
+              <li>"더 깊이"에서 E = mc², 사건의 지평선, 시간 지연, 호킹 온도를 고등학생 눈높이로</li>
+              <li>질량을 고르면 지평선 크기·밀도·증발 시간을 계산하는 블랙홀 계산기</li>
+              <li>풀이 설명이 있는 퀴즈와 별 질량별 운명 비교</li>
+            </ul>
+            <ul lang="en">
+              <li>The life of a star 30 times the Sun's mass, in 13 animated stages</li>
+              <li>"Go deeper" notes on E = mc², event horizons, time dilation and Hawking temperature</li>
+              <li>A black hole calculator for horizon size, density and evaporation time</li>
+              <li>A quiz with explanations and a comparison of stellar fates by mass</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="spec">
+          <dl>
+            <dt lang="ko">상태</dt><dt lang="en">Status</dt>
+            <dd><span class="pill wait" lang="ko">비공개 테스트 검토 중</span><span class="pill wait" lang="en">Closed test in review</span>
+              <div class="stage" style="color: var(--wait)" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div></dd>
+            <dt lang="ko">버전</dt><dt lang="en">Version</dt><dd>1.0.0</dd>
+            <dt lang="ko">대상</dt><dt lang="en">Ages</dt><dd lang="ko">13세 이상, 전체이용가</dd><dd lang="en">13 and up, rated for everyone</dd>
+            <dt lang="ko">언어</dt><dt lang="en">Languages</dt><dd lang="ko">한국어, 영어</dd><dd lang="en">Korean, English</dd>
+            <dt lang="ko">인터넷</dt><dt lang="en">Internet</dt><dd lang="ko">권한 없음</dd><dd lang="en">No permission</dd>
+          </dl>
+          <a class="go" href="https://play.google.com/apps/testing/com.sssnaplab.blackholeodyssey"><span lang="ko">테스트 참여하기 (검토 후 열림) →</span><span lang="en">Join the test (opens after review) →</span></a>
+        </aside>
+      </article>
       <p style="color: var(--muted); font-size: 13px; margin-top: 14px;">
         <span lang="ko">진행 막대: 개발 → 테스트 검토 → 비공개 테스트 → 정식 출시</span>
         <span lang="en">Progress bar: development → test review → closed testing → public release</span>
@@ -426,6 +463,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <div><a href="https://play.google.com/apps/testing/com.sssnaplab.snapqr">SnapQR</a><small lang="ko">참여 가능</small><small lang="en">Open</small></div>
           <div><a href="https://play.google.com/apps/testing/com.minq.shush"><span lang="ko">쉿! 소음 지킴이</span><span lang="en">Shush Meter</span></a><small lang="ko">참여 가능</small><small lang="en">Open</small></div>
           <div><a href="https://play.google.com/apps/testing/com.sssnaplab.cosmiczoom"><span lang="ko">코스믹 줌</span><span lang="en">Cosmic Zoom</span></a><small lang="ko">참여 가능</small><small lang="en">Open</small></div>
+          <div><a href="https://play.google.com/apps/testing/com.sssnaplab.blackholeodyssey"><span lang="ko">블랙홀 오디세이</span><span lang="en">Black Hole Odyssey</span></a><small lang="ko">Google 검토 후 열림</small><small lang="en">Opens after Google review</small></div>
           <small lang="ko">안드로이드 폰만 참여할 수 있어요.</small>
           <small lang="en">Android phones only.</small>
         </div>
