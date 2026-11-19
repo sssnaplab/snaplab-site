@@ -75,6 +75,19 @@ header.top { padding-block: 20px; }
 .facts b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .facts span { color: var(--muted); font-size: 14px; }
 
+.quick { padding-block: 24px 0; word-break: keep-all; }
+.quick-box { border: 2px solid var(--ink); border-radius: 16px; padding: 22px 24px; background: var(--panel); }
+.quick h2 { font-size: clamp(22px, 3.4vw, 28px); margin: 0 0 4px; }
+.quick .sub { margin: 0 0 18px; color: var(--muted); }
+.quick ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.quick li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.quick li > span { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--bg); display: grid; place-items: center; font: 600 14px var(--font-mono); }
+.quick li b { display: block; font-size: 17px; }
+.quick li p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.quick .btn { display: inline-block; margin-top: 8px; padding: 9px 16px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 700; text-decoration: none; }
+.quick .kakao { display: none; margin-bottom: 16px; padding: 12px 14px; border-radius: 10px; background: var(--snap); color: #111; font-weight: 600; }
+.quick .kakao a { color: #111; }
+html.in-kakao .quick .kakao { display: block; }
 section.apps { padding-block: 64px 24px; }
 .eyebrow { font: 500 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
 h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; margin: 0 0 28px; text-wrap: balance; }
@@ -147,6 +160,33 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 </header>
 
 <main>
+  <section class="quick" id="start" aria-labelledby="quick-h">
+    <div class="wrap">
+      <div class="quick-box">
+        <p class="kakao" lang="ko">카카오톡 안에서 열려 있어요. 여기선 구글 로그인이 안 돼서 가입이 안 됩니다. <a href="#" class="open-ext">Chrome으로 다시 열기 →</a><br><small>안 되면 오른쪽 위 ⋮ → "다른 브라우저로 열기"</small></p>
+        <p class="kakao" lang="en">You're inside KakaoTalk, which isn't signed in to Google. <a href="#" class="open-ext">Reopen in Chrome →</a></p>
+        <h2 id="quick-h"><span lang="ko">테스트 참여, 이 순서만 지키면 됩니다</span><span lang="en">Joining the test: just these steps</span></h2>
+        <p class="sub" lang="ko">안드로이드 폰에서, Play 스토어에 로그인된 그 Google 계정으로 해 주세요.</p>
+        <p class="sub" lang="en">On your Android phone, with the Google account you use for the Play Store.</p>
+        <ol>
+          <li><span>1</span><div>
+            <b lang="ko">Chrome에서 열기</b><b lang="en">Open in Chrome</b>
+            <p lang="ko">카톡으로 받은 링크는 카톡 안 브라우저로 열려서 구글 로그인이 안 돼요. ⋮ → "다른 브라우저로 열기"를 눌러 주세요.</p>
+            <p lang="en">Links opened inside chat apps aren't signed in to Google. Use ⋮ → "Open in browser".</p></div></li>
+          <li><span>2</span><div>
+            <b lang="ko">테스터 그룹 가입 (가장 먼저!)</b><b lang="en">Join the tester group first</b>
+            <p lang="ko">아래 버튼 → "그룹 가입" 누르기. 이걸 안 하면 다음 단계에서 "테스터 되기"가 안 보여요.</p>
+            <p lang="en">Tap below, then "Join group". Without this, "Become a tester" won't appear.</p>
+            <a class="btn" href="https://groups.google.com/g/snaplab-testers"><span lang="ko">snaplab-testers 그룹 가입 →</span><span lang="en">Join snaplab-testers →</span></a></div></li>
+          <li><span>3</span><div>
+            <b lang="ko">앱마다 "테스터 되기" → 설치</b><b lang="en">"Become a tester" for each app, then install</b>
+            <p lang="ko">그룹은 한 번이면 되지만, "테스터 되기"는 앱마다 따로 눌러야 해요. <a href="#join">앱별 링크 보기 ↓</a></p>
+            <p lang="en">The group is once; "Become a tester" is per app. <a href="#join">App links ↓</a></p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <section class="hero">
     <div class="wrap">
       <h1 lang="ko">손에 딱 맞는 <em>작은 도구</em>를 만듭니다</h1>
@@ -371,17 +411,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     </div>
   </section>
 
-  <section class="join" aria-labelledby="join-h">
+  <section class="join" id="join" aria-labelledby="join-h">
     <div class="wrap">
       <p class="eyebrow">Testers wanted</p>
       <h2 id="join-h"><span lang="ko">테스터가 되어 주세요</span><span lang="en">Become a tester</span></h2>
       <div class="join-box">
         <ol>
           <li><div><b lang="ko">테스터 그룹 가입</b><b lang="en">Join the tester group</b>
-            <p lang="ko">폰에서 쓰는 Google 계정으로 <a href="https://groups.google.com/g/snaplab-testers">snaplab-testers</a> 그룹에 가입합니다. 한 번 가입하면 모든 SnapLab 앱 테스트에 참여할 수 있어요.</p>
+            <p lang="ko">Chrome에서, 폰의 Google 계정으로 <a href="https://groups.google.com/g/snaplab-testers">snaplab-testers</a> 그룹에 먼저 가입합니다. 그룹 가입은 한 번이면 돼요.</p>
             <p lang="en">With the Google account on your phone, join <a href="https://groups.google.com/g/snaplab-testers">snaplab-testers</a>. One group covers every SnapLab app.</p></div></li>
           <li><div><b lang="ko">"테스터 되기" 누르기</b><b lang="en">Tap "Become a tester"</b>
-            <p lang="ko">오른쪽 앱별 링크를 같은 계정으로 열고, 같은 화면에서 Google Play로 설치합니다.</p>
+            <p lang="ko">앱별 링크를 같은 계정으로 열고 "테스터 되기"를 누른 뒤 Google Play에서 설치합니다. 앱마다 따로 눌러야 해요.</p>
             <p lang="en">Open an app's link with the same account and install it from Google Play.</p></div></li>
           <li><div><b lang="ko">14일 동안 지우지 않기</b><b lang="en">Keep it for 14 days</b>
             <p lang="ko">Google Play 정책상 정식 출시 전에 테스터 12명이 14일 동안 설치해 둬야 합니다. 가끔 열어서 써 주시면 큰 도움이 돼요.</p>
@@ -421,5 +461,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   try { saved = localStorage.getItem('snaplab-lang'); } catch (e) {}
   set(saved || ((navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en'));
   document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.l); }); });
+})();
+</script>
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  if (!/KAKAOTALK/i.test(ua)) return;
+  document.documentElement.classList.add('in-kakao');
+  var target = location.href.split('#')[0] + '#start';
+  var ext = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(target);
+  document.querySelectorAll('.open-ext').forEach(function (a) { a.href = ext; });
+  location.href = ext;
 })();
 </script>
