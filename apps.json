@@ -1,0 +1,117 @@
+{
+  "updated": "2026-11-20",
+  "group": "https://groups.google.com/g/snaplab-testers",
+  "apps": [
+    {
+      "id": "snap-keyboard", "package": "com.minq.snapkeyboard", "icon": "img/keyboard.png",
+      "status": "open", "version": "1.0.5", "internet": false,
+      "name": {"ko": "Snap Keyboard", "en": "Snap Keyboard"},
+      "short": {"ko": "Snap Keyboard", "en": "Snap Keyboard"},
+      "pitch": {"ko": "큰 키로 밀어서 치는 단모음 한글 키보드", "en": "A Korean keyboard with big keys you swipe"},
+      "features": {
+        "ko": ["자음 14개 + 단모음 8개, 아래로 밀면 ㄲㄸㅃㅆㅉ · ㅑㅕㅛㅠ", "이어질 단어 추천, 오타 교정 제안, 기기 안 단어 학습", "스페이스 길게 눌러 한자 변환, 클립보드 기록, 음성 입력", "이모지·문자 이모티콘 패널, 키 소리, 되돌리기", "한 손 모드, 폴더블 분할 자판, 고대비 테마, TalkBack 지원"],
+        "en": ["14 consonants + 8 vowels; swipe down for double consonants and diphthongs", "Next-word suggestions, typo hints, on-device learning", "Hanja conversion, clipboard history, voice typing", "Emoji and emoticon panel, key sounds, undo", "One-handed mode, split layout for foldables, high-contrast theme, TalkBack support"]
+      },
+      "spec": [
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "한국어 · 영어 자판", "en": "Korean · English layouts"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}}
+      ]
+    },
+    {
+      "id": "voice-clock", "package": "com.minq.voiceclock", "icon": "img/voiceclock.png",
+      "status": "full", "version": "1.3.1", "internet": false,
+      "name": {"ko": "음성 시계 – 말하는 타이머", "en": "Voice Clock: Talking Timer"},
+      "short": {"ko": "음성 시계", "en": "Voice Clock"},
+      "pitch": {"ko": "남은 시간을 소리 내어 세어 주는 타이머", "en": "A timer that counts down out loud"},
+      "features": {
+        "ko": ["마지막 1분부터 \"30초… 10, 9, 8…\" 음성 카운트다운", "아빠·엄마·아이 목소리로 녹음해 타이머 음성으로 사용", "화면이 꺼져도 정확하고 잠금 화면 위에서 울림", "약·루틴 알리미: 정한 시각에 \"약 드실 시간이에요\" 하고 말해 줌", "시각을 말해 주는 알람, 세계 시계, 스톱워치"],
+        "en": ["Spoken countdown in the last minute: \"30 seconds… 10, 9, 8…\"", "Record family voices and use them as the timer voice", "Accurate with the screen off, rings over the lock screen", "Medicine and routine reminders that speak up at the set time", "Talking alarms, world clock and stopwatch"]
+      },
+      "spec": [
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "6개 언어 (영·한·일·중·프·스)", "en": "6 (EN, KO, JA, ZH, FR, ES)"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}},
+        {"k": {"ko": "크기", "en": "Size"}, "v": {"ko": "외부 라이브러리 없음", "en": "No third-party libraries"}}
+      ]
+    },
+    {
+      "id": "snapqr", "package": "com.sssnaplab.snapqr", "icon": "img/snapqr.png",
+      "status": "full", "version": "1.2.0", "internet": true,
+      "name": {"ko": "SnapQR – 안전한 QR 스캐너", "en": "SnapQR – Safe QR Scanner"},
+      "short": {"ko": "SnapQR", "en": "SnapQR"},
+      "pitch": {"ko": "비추는 순간 잡고, 열기 전에 어디로 가는지 보여 주는 QR 스캐너", "en": "Locks on instantly and shows where a link goes before you open it"},
+      "features": {
+        "ko": ["작거나 먼 코드도 줌 없이 바로 인식, 첫 실행부터 모델 내장", "제목·이미지 미리보기, 단축 URL은 최종 주소까지 추적", "가짜 QR(큐싱) 경고: 유사 도메인, 동형 문자, APK, IP 주소", "공유받은 글 속 링크도 검사, 홈 화면 위젯, 바코드 모드", "Wi-Fi 연결, 전화·문자·지도·일정 코드를 맞는 앱으로"],
+        "en": ["Catches small or distant codes with no zooming; model built in", "Link preview, and short links followed to the final address", "Quishing warnings: look-alike domains, homoglyphs, APKs, raw IPs", "Checks links inside shared text; home screen widget and barcode mode", "Joins Wi-Fi, opens phone, SMS, map and calendar codes in the right app"]
+      },
+      "spec": [
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "6개 언어 (영·한·일·중·프·스)", "en": "6 (EN, KO, JA, ZH, FR, ES)"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "링크 미리보기에만 사용, 스캔 기록은 켤 때만", "en": "Only for link previews; scan history is opt-in"}},
+        {"k": {"ko": "검사", "en": "Checks"}, "v": {"ko": "기기 안에서 1ms 미만", "en": "On-device, under 1 ms"}}
+      ]
+    },
+    {
+      "id": "shush-meter", "package": "com.minq.shush", "icon": "svg:shush",
+      "status": "full", "version": "1.3.0", "internet": false,
+      "name": {"ko": "쉿! 소음 지킴이", "en": "Shush Meter"},
+      "short": {"ko": "쉿! 소음 지킴이", "en": "Shush Meter"},
+      "pitch": {"ko": "아이들이 시끄러우면 \"얘들아, 조용히 좀 해 줘!\" 하고 대신 말해 주는 소음계", "en": "A noise meter that asks the kids to keep it down, so you don't have to"},
+      "features": {
+        "ko": ["정한 dB를 몇 초 넘으면 음성·내 목소리·차임벨로 경고", "코골이 감시: 저음이 숨 쉬는 박자로 이어지면 기록·진동", "층간소음 대비 소음 일지: 1분마다 Leq·Lmax, 하루 1쪽 PDF 보고서", "앱을 꺼도 동작, 소음 순간만 골라 녹음"],
+        "en": ["Warns with speech, your own voice or a chime when noise stays over your limit", "Snore watch: counts low sounds that repeat at a breathing rhythm", "Noise log every minute (Leq, Lmax) with a one-page daily PDF report", "Keeps running in the background; can record just the loud moments"]
+      },
+      "spec": [
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "영어 · 한국어 · 일본어 · 중국어", "en": "English · Korean · Japanese · Chinese"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}},
+        {"k": {"ko": "측정", "en": "Metering"}, "v": {"ko": "A특성 dB 추정치, 기기별 보정", "en": "A-weighted dB estimate, per-device calibration"}}
+      ]
+    },
+    {
+      "id": "cosmic-zoom", "package": "com.sssnaplab.cosmiczoom", "icon": "img/cosmiczoom.png",
+      "status": "full", "version": "1.1.0", "internet": false,
+      "name": {"ko": "코스믹 줌 – 우주에서 쿼크까지", "en": "Cosmic Zoom: From the Cosmos to Quarks"},
+      "short": {"ko": "코스믹 줌", "en": "Cosmic Zoom"},
+      "pitch": {"ko": "손가락으로 벌리고 오므려서 은하단부터 쿼크까지 오가는 어린이 크기 탐험 놀이", "en": "A pinch-to-zoom journey for kids, from galaxy clusters down to quarks"},
+      "features": {
+        "ko": ["한강공원에 누운 \"나\"에서 출발해 끊김 없는 22단계 크기 여행", "우주 거대 구조·우리은하·지구·한반도부터 세포·DNA·원자·쿼크까지", "\"세포를 찾아라!\" 미션과 별점, 22단계를 모으는 크기 도감", "화면 가로 길이를 km, 광년, 나노미터, 10의 거듭제곱으로 실시간 표시"],
+        "en": ["Starts from \"me\" lying in a park and zooms through 22 seamless levels", "From the cosmic web, the Milky Way and Earth to cells, DNA, atoms and quarks", "Find-it missions with star ratings and a size collection to complete", "Live screen width in km, light-years, nanometres and powers of ten"]
+      },
+      "spec": [
+        {"k": {"ko": "대상", "en": "Ages"}, "v": {"ko": "6~15세, 전체이용가", "en": "6 to 15, rated for everyone"}},
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "한국어", "en": "Korean"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}}
+      ]
+    },
+    {
+      "id": "blackhole-odyssey", "package": "com.sssnaplab.blackholeodyssey", "new": true, "icon": "img/blackhole.png",
+      "status": "open", "version": "1.0.0", "internet": false,
+      "name": {"ko": "블랙홀 오디세이 – 별에서 블랙홀까지", "en": "Black Hole Odyssey"},
+      "short": {"ko": "블랙홀 오디세이", "en": "Black Hole Odyssey"},
+      "pitch": {"ko": "가스 구름에서 초신성, 블랙홀, 중력파, 호킹 증발까지 손가락으로 넘겨 보는 블랙홀의 일생", "en": "Swipe through a black hole's life, from gas cloud to supernova, gravitational waves and Hawking glow"},
+      "features": {
+        "ko": ["태양보다 30배 무거운 별 하나의 일생을 13단계 움직이는 그림으로", "\"더 깊이\"에서 E = mc², 사건의 지평선, 시간 지연, 호킹 온도를 고등학생 눈높이로", "질량을 고르면 지평선 크기·밀도·증발 시간을 계산하는 블랙홀 계산기", "풀이 설명이 있는 퀴즈와 별 질량별 운명 비교"],
+        "en": ["The life of a star 30 times the Sun's mass, in 13 animated stages", "\"Go deeper\" notes on E = mc², event horizons, time dilation and Hawking temperature", "A black hole calculator for horizon size, density and evaporation time", "A quiz with explanations and a comparison of stellar fates by mass"]
+      },
+      "spec": [
+        {"k": {"ko": "대상", "en": "Ages"}, "v": {"ko": "13세 이상, 전체이용가", "en": "13 and up, rated for everyone"}},
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "한국어, 영어", "en": "Korean, English"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}}
+      ]
+    },
+    {
+      "id": "number-quest", "package": "com.sssnaplab.numberquest", "new": true, "icon": "img/numberquest.png",
+      "status": "review", "version": "1.0.0", "internet": false,
+      "name": {"ko": "숫자 탐험대 – 5~9세 수학 게임", "en": "Number Quest: Kids Math Game"},
+      "short": {"ko": "숫자 탐험대", "en": "Number Quest"},
+      "pitch": {"ko": "수 세기부터 곱셈까지, 보스를 이기고 별을 모아 동물 친구를 만나는 어린이 수학 모험", "en": "Count, add, subtract and multiply: beat bosses and collect animal friends"},
+      "features": {
+        "ko": ["6개 나라 48단계: 수 세기·덧셈·뺄셈·두 자리 셈·곱셈구구", "나라마다 하트 3개 보스전, 60초 번개 도전과 연속 기록", "틀리면 10칸 상자·수직선·십 모형 그림 힌트, 비슷한 문제로 한 번 더", "문제를 소리 내어 읽어 주고, 보호자 화면에서 기술별 정답률 확인"],
+        "en": ["6 lands, 48 levels: counting, adding, subtracting, two-digit sums and times tables", "A 3-heart boss in every land, a 60-second Daily Dash and streaks", "Picture hints with ten frames, number lines and tens blocks, then a similar retry", "Questions read aloud, and a parent screen with accuracy by skill"]
+      },
+      "spec": [
+        {"k": {"ko": "대상", "en": "Ages"}, "v": {"ko": "5~9세, 전체이용가", "en": "5 to 9, rated for everyone"}},
+        {"k": {"ko": "언어", "en": "Languages"}, "v": {"ko": "한국어, 영어", "en": "Korean, English"}},
+        {"k": {"ko": "인터넷", "en": "Internet"}, "v": {"ko": "권한 없음", "en": "No permission"}}
+      ]
+    }
+  ]
+}
